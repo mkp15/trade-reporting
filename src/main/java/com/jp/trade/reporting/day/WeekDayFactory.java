@@ -8,7 +8,7 @@ public class WeekDayFactory {
 
     }
 
-    public static WeekDay getBusinessDay(Currency currency) {
+    public static WeekDay getWeekDay(Currency currency) {
         if(currency.getCurrencyCode().equals("AED") || currency.getCurrencyCode().equals("SAR")){
             return new WeekDayStartingSunday();
         }else{

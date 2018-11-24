@@ -47,8 +47,8 @@ public final class Instruction {
     }
 
     public LocalDate getAdjustedSettlementDate(){
-        WeekDay weekDay = WeekDayFactory.getBusinessDay(this.getCurrency());
-        return weekDay.sameOrNext(this.settlementDate);
+        WeekDay weekDay = WeekDayFactory.getWeekDay(this.getCurrency());
+        return weekDay.sameOrNextBusinessDay(this.settlementDate);
     }
 
     public TradeType getTradeType(){

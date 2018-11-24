@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public interface WeekDay {
     boolean isWeekDay(LocalDate localDate);
-    default LocalDate sameOrNext(LocalDate localDate) {
+    default LocalDate sameOrNextBusinessDay(LocalDate localDate) {
         LocalDate nextWorkingDay = localDate;
         while (!isWeekDay(nextWorkingDay)){
             nextWorkingDay = nextWorkingDay.plusDays(1);

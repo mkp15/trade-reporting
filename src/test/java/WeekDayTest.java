@@ -20,77 +20,75 @@ public class WeekDayTest {
     the next working day
 
      */
+    private LocalDate localDate = LocalDate.of(2018,11,23);
 
     @Test
     public void testAEDWeekDay(){
         // start of week SUNDAY and ends THURSDAY
-        WeekDay weekDay = WeekDayFactory.getBusinessDay(Currency.getInstance("AED"));
-        Assert.assertFalse(weekDay.isWeekDay(LocalDate.now().with(DayOfWeek.SATURDAY)));
-        Assert.assertTrue(weekDay.isWeekDay(LocalDate.now().with(DayOfWeek.SUNDAY)));
-        Assert.assertTrue(weekDay.isWeekDay(LocalDate.now().with(DayOfWeek.MONDAY)));
-        Assert.assertTrue(weekDay.isWeekDay(LocalDate.now().with(DayOfWeek.THURSDAY)));
-        Assert.assertTrue(weekDay.isWeekDay(LocalDate.now().with(DayOfWeek.WEDNESDAY)));
-        Assert.assertTrue(weekDay.isWeekDay(LocalDate.now().with(DayOfWeek.THURSDAY)));
-        Assert.assertFalse(weekDay.isWeekDay(LocalDate.now().with(DayOfWeek.FRIDAY)));
+        WeekDay weekDay = WeekDayFactory.getWeekDay(Currency.getInstance("AED"));
+        Assert.assertFalse(weekDay.isWeekDay(localDate.with(DayOfWeek.SATURDAY)));
+        Assert.assertTrue(weekDay.isWeekDay(localDate.with(DayOfWeek.SUNDAY)));
+        Assert.assertTrue(weekDay.isWeekDay(localDate.with(DayOfWeek.MONDAY)));
+        Assert.assertTrue(weekDay.isWeekDay(localDate.with(DayOfWeek.THURSDAY)));
+        Assert.assertTrue(weekDay.isWeekDay(localDate.with(DayOfWeek.WEDNESDAY)));
+        Assert.assertTrue(weekDay.isWeekDay(localDate.with(DayOfWeek.THURSDAY)));
+        Assert.assertFalse(weekDay.isWeekDay(localDate.with(DayOfWeek.FRIDAY)));
     }
 
     @Test
     public void testSARWeekDay(){
         // start of week SUNDAY and ends THURSDAY
-        WeekDay weekDay = WeekDayFactory.getBusinessDay(Currency.getInstance("SAR"));
-        Assert.assertFalse(weekDay.isWeekDay(LocalDate.now().with(DayOfWeek.SATURDAY)));
-        Assert.assertTrue(weekDay.isWeekDay(LocalDate.now().with(DayOfWeek.SUNDAY)));
-        Assert.assertTrue(weekDay.isWeekDay(LocalDate.now().with(DayOfWeek.MONDAY)));
-        Assert.assertTrue(weekDay.isWeekDay(LocalDate.now().with(DayOfWeek.THURSDAY)));
-        Assert.assertTrue(weekDay.isWeekDay(LocalDate.now().with(DayOfWeek.WEDNESDAY)));
-        Assert.assertTrue(weekDay.isWeekDay(LocalDate.now().with(DayOfWeek.THURSDAY)));
-        Assert.assertFalse(weekDay.isWeekDay(LocalDate.now().with(DayOfWeek.FRIDAY)));
+        WeekDay weekDay = WeekDayFactory.getWeekDay(Currency.getInstance("SAR"));
+        Assert.assertFalse(weekDay.isWeekDay(localDate.with(DayOfWeek.SATURDAY)));
+        Assert.assertTrue(weekDay.isWeekDay(localDate.with(DayOfWeek.SUNDAY)));
+        Assert.assertTrue(weekDay.isWeekDay(localDate.with(DayOfWeek.MONDAY)));
+        Assert.assertTrue(weekDay.isWeekDay(localDate.with(DayOfWeek.THURSDAY)));
+        Assert.assertTrue(weekDay.isWeekDay(localDate.with(DayOfWeek.WEDNESDAY)));
+        Assert.assertTrue(weekDay.isWeekDay(localDate.with(DayOfWeek.THURSDAY)));
+        Assert.assertFalse(weekDay.isWeekDay(localDate.with(DayOfWeek.FRIDAY)));
     }
 
     @Test
     public void testGeneralWeekDay(){
         // start of week SUNDAY and ends THURSDAY
-        WeekDay weekDay = WeekDayFactory.getBusinessDay(Currency.getInstance("USD"));
-        Assert.assertFalse(weekDay.isWeekDay(LocalDate.now().with(DayOfWeek.SATURDAY)));
-        Assert.assertFalse(weekDay.isWeekDay(LocalDate.now().with(DayOfWeek.SUNDAY)));
-        Assert.assertTrue(weekDay.isWeekDay(LocalDate.now().with(DayOfWeek.MONDAY)));
-        Assert.assertTrue(weekDay.isWeekDay(LocalDate.now().with(DayOfWeek.THURSDAY)));
-        Assert.assertTrue(weekDay.isWeekDay(LocalDate.now().with(DayOfWeek.WEDNESDAY)));
-        Assert.assertTrue(weekDay.isWeekDay(LocalDate.now().with(DayOfWeek.THURSDAY)));
-        Assert.assertTrue(weekDay.isWeekDay(LocalDate.now().with(DayOfWeek.FRIDAY)));
+        WeekDay weekDay = WeekDayFactory.getWeekDay(Currency.getInstance("USD"));
+        Assert.assertFalse(weekDay.isWeekDay(localDate.with(DayOfWeek.SATURDAY)));
+        Assert.assertFalse(weekDay.isWeekDay(localDate.with(DayOfWeek.SUNDAY)));
+        Assert.assertTrue(weekDay.isWeekDay(localDate.with(DayOfWeek.MONDAY)));
+        Assert.assertTrue(weekDay.isWeekDay(localDate.with(DayOfWeek.THURSDAY)));
+        Assert.assertTrue(weekDay.isWeekDay(localDate.with(DayOfWeek.WEDNESDAY)));
+        Assert.assertTrue(weekDay.isWeekDay(localDate.with(DayOfWeek.THURSDAY)));
+        Assert.assertTrue(weekDay.isWeekDay(localDate.with(DayOfWeek.FRIDAY)));
     }
 
     @Test
     public void testAEDSameOrNextBusinessDay(){
      // start of week MONDAY and ends FRIDAY
-        LocalDate localDate = LocalDate.now();
-        WeekDay weekDay = WeekDayFactory.getBusinessDay(Currency.getInstance("AED"));
-        Assert.assertEquals(localDate.with(DayOfWeek.SUNDAY), weekDay.sameOrNext(localDate.with(DayOfWeek.SATURDAY)));
-        Assert.assertEquals(localDate.with(DayOfWeek.SUNDAY), weekDay.sameOrNext(localDate.with(DayOfWeek.FRIDAY)));
-        Assert.assertEquals(localDate.with(DayOfWeek.MONDAY), weekDay.sameOrNext(localDate.with(DayOfWeek.MONDAY)));
-        Assert.assertEquals(localDate.with(DayOfWeek.TUESDAY), weekDay.sameOrNext(localDate.with(DayOfWeek.TUESDAY)));
+        WeekDay weekDay = WeekDayFactory.getWeekDay(Currency.getInstance("AED"));
+        Assert.assertEquals(localDate.with(DayOfWeek.SUNDAY), weekDay.sameOrNextBusinessDay(localDate.with(DayOfWeek.SATURDAY)));
+        Assert.assertEquals(localDate.with(DayOfWeek.SUNDAY), weekDay.sameOrNextBusinessDay(localDate.with(DayOfWeek.FRIDAY)));
+        Assert.assertEquals(localDate.with(DayOfWeek.MONDAY), weekDay.sameOrNextBusinessDay(localDate.with(DayOfWeek.MONDAY)));
+        Assert.assertEquals(localDate.with(DayOfWeek.TUESDAY), weekDay.sameOrNextBusinessDay(localDate.with(DayOfWeek.TUESDAY)));
     }
 
     @Test
     public void testSARSameOrNextBusinessDay(){
         // start of week MONDAY and ends FRIDAY
-        LocalDate localDate = LocalDate.now();
-        WeekDay weekDay = WeekDayFactory.getBusinessDay(Currency.getInstance("SAR"));
-        Assert.assertEquals(localDate.with(DayOfWeek.SUNDAY), weekDay.sameOrNext(localDate.with(DayOfWeek.SATURDAY)));
-        Assert.assertEquals(localDate.with(DayOfWeek.SUNDAY), weekDay.sameOrNext(localDate.with(DayOfWeek.FRIDAY)));
-        Assert.assertEquals(localDate.with(DayOfWeek.MONDAY), weekDay.sameOrNext(localDate.with(DayOfWeek.MONDAY)));
-        Assert.assertEquals(localDate.with(DayOfWeek.TUESDAY), weekDay.sameOrNext(localDate.with(DayOfWeek.TUESDAY)));
+        WeekDay weekDay = WeekDayFactory.getWeekDay(Currency.getInstance("SAR"));
+        Assert.assertEquals(localDate.with(DayOfWeek.SUNDAY), weekDay.sameOrNextBusinessDay(localDate.with(DayOfWeek.SATURDAY)));
+        Assert.assertEquals(localDate.with(DayOfWeek.SUNDAY), weekDay.sameOrNextBusinessDay(localDate.with(DayOfWeek.FRIDAY)));
+        Assert.assertEquals(localDate.with(DayOfWeek.MONDAY), weekDay.sameOrNextBusinessDay(localDate.with(DayOfWeek.MONDAY)));
+        Assert.assertEquals(localDate.with(DayOfWeek.TUESDAY), weekDay.sameOrNextBusinessDay(localDate.with(DayOfWeek.TUESDAY)));
     }
 
     @Test
     public void testGeneralSameOrNextBusinessDay(){
         // start of week MONDAY and ends FRIDAY
-        LocalDate localDate = LocalDate.now();
-        WeekDay weekDay = WeekDayFactory.getBusinessDay(Currency.getInstance("USD"));
-        Assert.assertEquals(localDate.with(TemporalAdjusters.next(DayOfWeek.MONDAY)), weekDay.sameOrNext(localDate.with(DayOfWeek.SATURDAY)));
-        Assert.assertEquals(localDate.with(DayOfWeek.FRIDAY), weekDay.sameOrNext(localDate.with(DayOfWeek.FRIDAY)));
-        Assert.assertEquals(localDate.with(DayOfWeek.MONDAY), weekDay.sameOrNext(localDate.with(DayOfWeek.MONDAY)));
-        Assert.assertEquals(localDate.with(DayOfWeek.TUESDAY), weekDay.sameOrNext(localDate.with(DayOfWeek.TUESDAY)));
-        Assert.assertEquals(localDate.with(TemporalAdjusters.next(DayOfWeek.MONDAY)), weekDay.sameOrNext(localDate.with(DayOfWeek.SUNDAY)));
+        WeekDay weekDay = WeekDayFactory.getWeekDay(Currency.getInstance("USD"));
+        Assert.assertEquals(localDate.with(TemporalAdjusters.next(DayOfWeek.MONDAY)), weekDay.sameOrNextBusinessDay(localDate.with(DayOfWeek.SATURDAY)));
+        Assert.assertEquals(localDate.with(DayOfWeek.FRIDAY), weekDay.sameOrNextBusinessDay(localDate.with(DayOfWeek.FRIDAY)));
+        Assert.assertEquals(localDate.with(DayOfWeek.MONDAY), weekDay.sameOrNextBusinessDay(localDate.with(DayOfWeek.MONDAY)));
+        Assert.assertEquals(localDate.with(DayOfWeek.TUESDAY), weekDay.sameOrNextBusinessDay(localDate.with(DayOfWeek.TUESDAY)));
+        Assert.assertEquals(localDate.with(TemporalAdjusters.next(DayOfWeek.MONDAY)), weekDay.sameOrNextBusinessDay(localDate.with(DayOfWeek.SUNDAY)));
     }
 }
