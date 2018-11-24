@@ -10,9 +10,9 @@ public class WeekDayFactory {
 
     public static WeekDay getWeekDay(Currency currency) {
         if(currency.getCurrencyCode().equals("AED") || currency.getCurrencyCode().equals("SAR")){
-            return new WeekDayStartingSunday();
+            return WeekDayStartingSunday.getInstance();
         }else{
-            return new WeekDayStartingMonday();
+            return WeekDayStartingMonday.getInstance();
         }
     }
 }
