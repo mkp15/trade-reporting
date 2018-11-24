@@ -4,28 +4,28 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class RankVo {
-    private final DailyStatsVo dailyAggregateStatsVo;
+    private final DailyStatsVo dailyStatsVo;
     private final int rank;
 
-    public RankVo(DailyStatsVo dailyAggregateStatsVo, int rank){
-      this.dailyAggregateStatsVo = dailyAggregateStatsVo;
+    public RankVo(DailyStatsVo dailyStatsVo, int rank){
+      this.dailyStatsVo = dailyStatsVo;
       this.rank = rank;
     }
 
     public String getEntityName(){
-        return dailyAggregateStatsVo.getEntityName();
+        return dailyStatsVo.getEntityName();
     }
 
     public BigDecimal getTotal(){
-        return dailyAggregateStatsVo.getTotal();
+        return dailyStatsVo.getTotal();
     }
 
     public LocalDate getAdjustedSettlementDate(){
-        return dailyAggregateStatsVo.getSettlementDate();
+        return dailyStatsVo.getSettlementDate();
     }
 
     public DailyStatsVo getDailyAggregateStatsVo() {
-        return dailyAggregateStatsVo;
+        return dailyStatsVo;
     }
 
     public int getRank() {

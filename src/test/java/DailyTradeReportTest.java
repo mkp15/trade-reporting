@@ -1,5 +1,5 @@
 import com.jp.trade.reporting.enums.TradeType;
-import com.jp.trade.reporting.service.DailyReport;
+import com.jp.trade.reporting.service.DailyReportService;
 import com.jp.trade.reporting.service.Report;
 import com.jp.trade.reporting.vo.ReportVo;
 import org.junit.Assert;
@@ -17,7 +17,7 @@ public class DailyTradeReportTest extends BaseTest{
     //Entity, Rank, TotalAmountIncoming, TotalAmountOutgoing, AdjustedSettlementDate
     @Test
     public void testReportVo(){
-        Report report = new DailyReport(this.instructions);
+        Report report = new DailyReportService(this.instructions);
         List<ReportVo> reportVos = report.generate();
         Assert.assertEquals(16, reportVos.size());
         List<ReportVo> incomingReportVos = reportVos.stream()

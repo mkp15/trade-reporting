@@ -9,11 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class DailyReport implements Report {
+public class DailyReportService implements Report {
 
     private final List<Instruction> instructions;
 
-    public DailyReport(List<Instruction> instructions) {
+    public DailyReportService(List<Instruction> instructions) {
         this.instructions = instructions;
     }
 
